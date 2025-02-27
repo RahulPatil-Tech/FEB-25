@@ -1,0 +1,4 @@
+Hello, this is a sample text file.
+The quick brown fox jumps over the lazy dog.
+Have a great day!
+
