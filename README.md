@@ -1,7 +1,7 @@
 # **CDAC DAC FEB 2025** 🎓💻
 
 ## **Project Overview** 📊
-Welcome to the **CDAC DAC FEB 2025** project! 🎉 This repository contains the work completed for the **Center for Development of Advanced Computing (CDAC)** Digital Advanced Computing Course (DAC), February 2025 batch.
+Welcome to the **CDAC DAC FEB 2025** project! 🎉 This repository contains the work completed for the **Center for Development of Advanced Computing (CDAC)** Diploma In Advanced Computing Course (DAC), February 2025 batch.
 
 This project focuses on building **innovative solutions** using the technologies learned during the course, including **Python**, **Java**, **Web Development**, **Database Management**, and more. 🚀
 
