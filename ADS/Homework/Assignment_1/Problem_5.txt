@@ -1,0 +1,64 @@
+Problem 5: Dry Run & Complexity Analysis
+
+1. Dry run the code for n = 4. How many times is * printed? What is the time complexity?
+void printTriangle(int n) {
+for (int i = 0; i < n; i++)
+for (int j = 0; j <= i; j++)
+System.out.print("*");
+}
+
+n = 4:
+ loop: 0, 1, 2, 3 (4 iterations)
+ loop: 1 + 2 + 3 + 4 = 10 iterations
+printed 10 times.
+Time Complexity: O(n^2)
+
+
+2. Dry run for n = 8. What’s the number of iterations? Time complexity?
+void printPattern(int n) {
+for (int i = 1; i <= n; i *= 2)
+for (int j = 0; j < n; j++)
+System.out.println(i + "," + j);
+}
+n = 8:
+ loop: 1, 2, 4, 8 (4 iterations)
+ loop: 8 iterations per i loop
+Total iterations: 4 * 8 = 32
+Time Complexity: O(n log n)
+
+
+
+3. Dry run for n = 20. How many recursive calls? What values are printed?
+void recHalf(int n) {
+if (n <= 0) return;
+System.out.print(n + " ");
+recHalf(n / 2);
+}
+n = 20:
+Recursive calls: 20, 10, 5, 2, 1
+Output: 20 10 5 2 1
+Total calls: 6
+Time Complexity: O(log n)
+
+
+4. Dry run for n = 3. How many total calls are made? What’s the time complexity?
+void fun(int n) {
+if (n == 0) return;
+fun(n - 1);
+fun(n - 1);
+}
+n = 3:
+Total calls: 2^3 = 8 (including the initial call)
+Time Complexity: O(2^n)
+
+
+5. Dry run for n = 3. How many total iterations? Time complexity?
+void tripleNested(int n) {
+for (int i = 0; i < n; i++)
+for (int j = 0; j < n; j++)
+for (int k = 0; k < n; k++)
+System.out.println(i + j + k);
+}
+n = 3:
+Total iterations: 3 * 3 * 3 = 27
+Time Complexity: O(n^3)
