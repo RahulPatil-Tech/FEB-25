@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Contact Us • Rapa Labs</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+/* ----------  THEME  ---------- */
+:root{
+  --brand:#007bff;      --brand-dark:#0056b3;
+  --bg-grad1:#74ebd5;   --bg-grad2:#ACB6E5;
+  --card-bg:hsla(0,0%,100%,.85);
+  --card-border:hsla(0,0%,100%,.35);
+  --shadow:rgba(0,0,0,.15);  --blur:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Helvetica,Arial,sans-serif;}
+
+/* ----------  BACKGROUND  ---------- */
+body{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--bg-grad1),var(--bg-grad2));overflow:hidden;
+}
+body::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="white" opacity="0.15"><circle cx="100" cy="1100" r="100"/><circle cx="1150" cy="200" r="130"/><circle cx="350" cy="400" r="80"/><circle cx="900" cy="950" r="90"/></svg>') center/cover;
+  animation:drift 20s linear infinite alternate;
+}
+@keyframes drift{to{transform:translateY(-80px)}}
+
+/* ----------  CARD  ---------- */
+.card{
+  width:min(95vw,550px);padding:50px 45px;border-radius:24px;
+  background:var(--card-bg);border:1px solid var(--card-border);
+  box-shadow:0 12px 28px var(--shadow);backdrop-filter:blur(var(--blur));
+  animation:pop .6s cubic-bezier(.25,1.25,.5,1);
+}
+@keyframes pop{0%{transform:scale(.85) translateY(15px);opacity:0}80%{opacity:1}100%{transform:scale(1)}}
+
+/* ----------  TITLE & SUB  ---------- */
+h1{text-align:center;font-size:clamp(1.7rem,5vw,2.2rem);font-weight:700;color:#222}
+p.lead{text-align:center;font-size:1rem;margin:10px 0 34px;color:#555}
+
+/* ----------  FORM  ---------- */
+form{display:flex;flex-direction:column;gap:26px}
+.group{position:relative}
+input,textarea{
+  width:100%;padding:18px;border-radius:14px;border:1px solid #ccc;font-size:1rem;
+  background:hsla(0,0%,100%,.55);transition:border .25s,box-shadow .25s;resize:none
+}
+textarea{min-height:140px;padding:18px 18px}
+input:focus,textarea:focus{
+  outline:none;border:1px solid var(--brand);box-shadow:0 0 0 4px rgba(0,123,255,.15)
+}
+label.floating{
+  position:absolute;left:18px;top:50%;transform:translateY(-50%);
+  pointer-events:none;color:#777;transition:.25s;font-size:1rem;
+}
+input:focus+label.floating,
+input:not(:placeholder-shown)+label.floating,
+textarea:focus+label.floating,
+textarea:not(:placeholder-shown)+label.floating{
+  top:-8px;background:var(--card-bg);padding:0 6px;font-size:.75rem;
+  color:var(--brand);border-radius:4px;
+}
+.group i.icon{
+  position:absolute;right:18px;top:50%;transform:translateY(-50%);color:#999
+}
+
+/* ----------  BUTTON  ---------- */
+button.submit{
+  background:var(--brand);color:#fff;font-size:1.1rem;font-weight:600;
+  padding:15px;border:none;border-radius:14px;cursor:pointer;transition:.25s;
+}
+button.submit:hover{background:var(--brand-dark);transform:translateY(-2px)}
+button.submit:active{transform:translateY(0)}
+
+/* ----------  FOOTER  ---------- */
+.back-link{
+  margin-top:28px;text-align:center;font-size:.95rem
+}
+.back-link a{color:#222;text-decoration:none}
+.back-link a:hover{color:var(--brand)}
+
+/* ----------  SMALL SCREENS  ---------- */
+@media(max-width:380px){.card{padding:42px 26px}}
+</style>
+</head>
+<body>
+
+<main class="card">
+  <h1>Contact Us</h1>
+  <p class="lead">We’d love to hear from you—send a message and we’ll reply within 24 hours.</p>
+
+  <form action="/contact" method="post">
+    <div class="group">
+      <input type="text" id="name" name="name" placeholder=" " required>
+      <label for="name" class="floating">Full Name</label>
+      <i class="fa fa-user icon"></i>
+    </div>
+
+    <div class="group">
+      <input type="email" id="email" name="email" placeholder=" " required>
+      <label for="email" class="floating">Email</label>
+      <i class="fa fa-envelope icon"></i>
+    </div>
+
+    <div class="group">
+      <input type="text" id="subject" name="subject" placeholder=" " required>
+      <label for="subject" class="floating">Subject</label>
+      <i class="fa fa-tag icon"></i>
+    </div>
+
+    <div class="group">
+      <textarea id="msg" name="message" placeholder=" " required></textarea>
+      <label for="msg" class="floating">Your Message</label>
+      <i class="fa fa-comment-dots icon"></i>
+    </div>
+
+    <button type="submit" class="submit">Send Message</button>
+  </form>
+
+  <div class="back-link">
+    <a href="index.html"><i class="fa fa-arrow-left"></i> Back to Home</a>
+  </div>
+</main>
+
+</body>
+</html>

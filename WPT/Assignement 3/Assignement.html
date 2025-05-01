@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Exercises</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ... (previous styles) ... */
+        #exercise4Output, #exercise5Output {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+        #exercise4Output h3, #exercise5Output h3 {
+            color: #555;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Exercises</h1>
+
+        <section id="exercise1">
+            <h2>Exercise 1: Uppercase Callback</h2>
+            <input type="text" id="exercise1Input" placeholder="Enter text for Exercise 1">
+            <button id="exercise1Btn">Process</button>
+            <div id="exercise1Output">
+                <h3>Output:</h3>
+                <pre id="exercise1Result"></pre>
+            </div>
+        </section>
+
+        <section id="exercise2">
+            <h2>Exercise 2: Array Multiplication Callback</h2>
+            <p>Array: <code>[10, 20, 30, 40, 50]</code></p>
+            <button id="exercise2Btn">Process Array</button>
+            <div id="exercise2Output">
+                <h3>Output:</h3>
+                <pre id="exercise2Result"></pre>
+            </div>
+        </section>
+
+        <section id="exercise3">
+            <h2>Exercise 3: Simulated Network Request</h2>
+            <p>Simulating a fetch from: <code>https://example.com/api/data</code></p>
+            <button id="exercise3Btn">Simulate Fetch</button>
+            <div id="exercise3Output">
+                <h3>Output:</h3>
+                <pre id="exercise3Result"></pre>
+            </div>
+        </section>
+
+        <section id="exercise4">
+            <h2>Exercise 4: Fetch with Error Handling</h2>
+            <p>Simulating a fetch from: <code>https://example.com/api/data</code> (with potential error)</p>
+            <button id="exercise4Btn">Simulate Fetch</button>
+            <div id="exercise4Output">
+                <h3>Output:</h3>
+                <pre id="exercise4Result"></pre>
+            </div>
+        </section>
+
+        <section id="exercise5">
+            <h2>Exercise 5: Nested Callbacks</h2>
+            <p>Fetches data and then processes it.</p>
+            <button id="exercise5Btn">Start Nested Process</button>
+            <div id="exercise5Output">
+                <h3>Output:</h3>
+                <pre id="exercise5Result"></pre>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Exercise 1 (remains the same) ---
+            const exercise1Input = document.getElementById('exercise1Input');
+            const exercise1Btn = document.getElementById('exercise1Btn');
+            const exercise1Result = document.getElementById('exercise1Result');
+
+            function toUpperCase(str) {
+                exercise1Result.textContent += `toUpperCallback received: "${str}"\n`;
+                exercise1Result.textContent += `toUpperCallback output: "${str.toUpperCase()}"\n`;
+                return str.toUpperCase();
+            }
+
+            function processDataEx1(inputString, callback) {
+                exercise1Result.textContent += `processData called with: "${inputString}"\n`;
+                callback(inputString);
+            }
+
+            exercise1Btn.addEventListener('click', function() {
+                exercise1Result.textContent = "";
+                const inputText = exercise1Input.value;
+                processDataEx1(inputText, toUpperCase);
+            });
+
+            // --- Exercise 2 (remains the same) ---
+            const exercise2Btn = document.getElementById('exercise2Btn');
+            const exercise2Result = document.getElementById('exercise2Result');
+            const numbers = [10, 20, 30, 40, 50];
+
+            function forEachElement(arr, callback) {
+                exercise2Result.textContent += `forEachElement called with array: [${arr.join(', ')}]\n`;
+                for (let i = 0; i < arr.length; i++) {
+                    callback(arr[i], i);
+                }
+            }
+
+            exercise2Btn.addEventListener('click', function() {
+                exercise2Result.textContent = "";
+                forEachElement(numbers, function(number, index) {
+                    const result = number * 2;
+                    exercise2Result.textContent += `Callback received: ${number} at index ${index}\n`;
+                    exercise2Result.textContent += `Callback output: ${number} * 2 = ${result}\n`;
+                });
+            });
+
+            // --- Exercise 3 (remains the same) ---
+            const exercise3Btn = document.getElementById('exercise3Btn');
+            const exercise3Result = document.getElementById('exercise3Result');
+
+            function fetchDataEx3(url, callback) {
+                exercise3Result.textContent += `fetchData called with URL: ${url}\n`;
+                exercise3Result.textContent += `Simulating network request...\n`;
+                setTimeout(function() {
+                    const shouldFail = Math.random() < 0.3; // Simulate a 30% chance of failure
+                    if (shouldFail) {
+                        const error = "Error: Failed to fetch data";
+                        exercise3Result.textContent += `After delay... (simulated failure)\n`;
+                        callback(error, null); // Pass error as the first argument
+                    } else {
+                        const response = "Simulated response data from https://example.com/api/data";
+                        exercise3Result.textContent += `After delay... (simulated success)\n`;
+                        callback(null, response); // Pass null for error, response as second
+                    }
+                }, 1500);
+            }
+
+            exercise3Btn.addEventListener('click', function() {
+                exercise3Result.textContent = "";
+                const dataUrl = "https://example.com/api/data";
+                fetchDataEx3(dataUrl, function(error, data) {
+                    if (error) {
+                        exercise3Result.textContent += `Callback received: ${error}\n`;
+                    } else {
+                        exercise3Result.textContent += `Callback received response: "${data}"\n`;
+                    }
+                });
+            });
+
+            // --- Exercise 4 ---
+            const exercise4Btn = document.getElementById('exercise4Btn');
+            const exercise4Result = document.getElementById('exercise4Result');
+
+            function fetchDataEx4(url, callback) {
+                exercise4Result.textContent += `fetchData called with URL: ${url}\n`;
+                exercise4Result.textContent += `Simulating network request with error handling...\n`;
+                setTimeout(function() {
+                    const shouldFail = Math.random() < 0.5; // Simulate a 50% chance of failure
+                    if (shouldFail) {
+                        const error = "Error: Network request timed out or failed.";
+                        exercise4Result.textContent += `After delay... (simulated error)\n`;
+                        console.error("Fetch Error:", error); // Gracefully log the error
+                        callback(error, null);
+                    } else {
+                        const response = "Simulated successful data retrieval.";
+                        exercise4Result.textContent += `After delay... (simulated success)\n`;
+                        callback(null, response);
+                    }
+                }, 2000);
+            }
+
+            exercise4Btn.addEventListener('click', function() {
+                exercise4Result.textContent = "";
+                const dataUrl = "https://jsonplaceholder.typicode.com/users";
+                fetchDataEx4(dataUrl, function(error, data) {
+                    if (error) {
+                        exercise4Result.textContent += `Callback received error: "${error}"\n`;
+                    } else {
+                        exercise4Result.textContent += `Callback received response: "${data}"\n`;
+                    }
+                });
+            });
+
+            // --- Exercise 5 ---
+            const exercise5Btn = document.getElementById('exercise5Btn');
+            const exercise5Result = document.getElementById('exercise5Result');
+
+            function fetchDataEx5(url, callback) {
+                exercise5Result.textContent += `fetchData called with URL: ${url}\n`;
+                exercise5Result.textContent += `Simulating data fetch...\n`;
+                setTimeout(function() {
+                    const responseData = { message: "Data fetched successfully!", value: 123 };
+                    exercise5Result.textContent += `After delay... Data fetched.\n`;
+                    callback(null, responseData);
+                }, 1800);
+            }
+
+            function processDataEx5(data, finalCallback) {
+                exercise5Result.textContent += `processDataEx5 received data: ${JSON.stringify(data)}\n`;
+                if (data && typeof data.value === 'number') {
+                    const processedResult = `Processed value: ${data.value * 2}`;
+                    exercise5Result.textContent += `processDataEx5 processed result: "${processedResult}"\n`;
+                    finalCallback(null, processedResult);
+                } else {
+                    const error = "Error: Invalid data format received.";
+                    exercise5Result.textContent += `processDataEx5 error: ${error}\n`;
+                    finalCallback(error, null);
+                }
+            }
+
+            exercise5Btn.addEventListener('click', function() {
+                exercise5Result.textContent = "";
+                const dataUrl = "https://jsonplaceholder.typicode.com/users";
+                fetchDataEx5(dataUrl, function(error, fetchedData) {
+                    if (error) {
+                        exercise5Result.textContent += `Error from fetchData: ${error}\n`;
+                    } else {
+                        processDataEx5(fetchedData, function(processError, processedData) {
+                            if (processError) {
+                                exercise5Result.textContent += `Error from processData: ${processError}\n`;
+                            } else {
+                                exercise5Result.textContent += `Final processed data: "${processedData}"\n`;
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

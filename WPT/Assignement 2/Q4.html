@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Bold Words on Hover</title>
+    <style>
+        #highlightLink {
+            color: blue;
+            cursor: pointer;
+        }
+
+        .highlighted {
+            background-color: yellow;
+            font-weight: normal !important; /* Override existing bold */
+            color: black; /* Ensure text is readable */
+        }
+    </style>
+</head>
+<body>
+
+    <p>
+        We have just started <strong>this</strong> section for the users (<strong>beginner</strong> to <strong>intermediate</strong>) who
+        <strong>want</strong> to work with <strong>various</strong> JavaScript <strong>problems</strong> and write scripts online to <strong>test</strong>
+        their JavaScript <strong>skill</strong>.
+    </p>
+
+    <p>Hover over <a id="highlightLink">this</a> link to highlight the bold words above.</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const highlightLink = document.getElementById('highlightLink');
+            const paragraph = document.querySelector('p'); // Select the first paragraph
+
+            highlightLink.addEventListener('mouseover', function() {
+                const boldWords = paragraph.querySelectorAll('strong');
+                boldWords.forEach(word => {
+                    word.classList.add('highlighted');
+                });
+            });
+
+            highlightLink.addEventListener('mouseout', function() {
+                const boldWords = paragraph.querySelectorAll('strong');
+                boldWords.forEach(word => {
+                    word.classList.remove('highlighted');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even More Attractive Form Data</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e6f7ff; 
+            background-image: url('https://plus.unsplash.com/premium_photo-1701590725721-add548ecdf61?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2Vic2l0ZSUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            animation: fadeIn 0.5s ease-in-out; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px; 
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); 
+            width: 450px; 
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600; 
+            color: #444; 
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: calc(100% - 20px); 
+            padding: 12px; 
+            margin-bottom: 25px;
+            border: 1px solid #ccc;
+            border-radius: 6px; 
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2); 
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px; 
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out; 
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.02); 
+        }
+
+        #output {
+            background-color: #f0f9ff; 
+            padding: 30px; 
+            border: 1px solid #add8e6; 
+            border-radius: 8px; 
+            margin-top: 40px; 
+            width: 450px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        #output h3 {
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 15px; 
+            font-size: 22px; 
+            font-weight: 700; 
+        }
+
+        #output p {
+            margin-bottom: 12px; 
+            color: #555; 
+            font-size: 16px;
+            line-height: 1.6; 
+        }
+
+        #output strong {
+            font-weight: 600; 
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="myForm">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName"><br><br>
+
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName"><br><br>
+
+        <label for="contactNo">Contact No.:</label><br>
+        <input type="tel" id="contactNo" name="contactNo"><br><br>
+
+        <label for="emailId">Email ID:</label><br>
+        <input type="email" id="emailId" name="emailId"><br><br>
+
+        <label for="address">Address:</label><br>
+        <textarea id="address" name="address"></textarea><br><br>
+
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="output">
+        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('myForm');
+            const outputDiv = document.getElementById('output');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const contactNo = document.getElementById('contactNo').value;
+                const emailId = document.getElementById('emailId').value;
+                const address = document.getElementById('address').value;
+                const dob = document.getElementById('dob').value;
+
+                outputDiv.innerHTML = `
+                    <h3>You entered:</h3>
+                    <p><strong>First Name:</strong> ${firstName}</p>
+                    <p><strong>Last Name:</strong> ${lastName}</p>
+                    <p><strong>Contact No.:</strong> ${contactNo}</p>
+                    <p><strong>Email ID:</strong> ${emailId}</p>
+                    <p><strong>Address:</strong> ${address.replace(/\n/g, '<br>')}</p>
+                    <p><strong>Date of Birth:</strong> ${dob}</p>
+                `;
+            });
+        });
+    </script>
+
+</body>
+</html>

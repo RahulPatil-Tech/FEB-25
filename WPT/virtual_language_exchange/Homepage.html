@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Virtual Language Exchanges</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            margin-left: 2rem;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: #ffde59;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 120px 20px 80px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-button {
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background-color: #ffde59;
+            color: #333;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #ffc107;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+        }
+
+        .cards,
+        .testimonials,
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card,
+        .testimonial,
+        .stat {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover,
+        .testimonial:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img,
+        .testimonial img {
+            width: 70px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .users-say {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .say-card {
+            background: #ffffff;
+            border-left: 5px solid #ffde59;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .say-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .say-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .say-card h4 {
+            font-size: 1rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">🌍 VLE</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#stats">Stats</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Connect. Communicate. Celebrate!</h1>
+        <p>Practice languages with real people around the world. Make friends, break barriers, and become a global
+            citizen.</p>
+        <a href="#languages" class="cta-button">Start Learning Now</a>
+    </section>
+
+    <!-- Popular Languages -->
+    <section id="languages">
+        <h2>🌟 Popular Languages</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://img.icons8.com/color/96/usa.png" alt="English">
+                <h3>English</h3>
+                <p>The global language for travel, business, and friendship!</p>
+            </div>
+            <div class="card">
+                <img src="https://img.icons8.com/color/96/spain-2.png" alt="Spanish">
+                <h3>Spanish</h3>
+                <p>Speak with over 500 million people across 20+ countries.</p>
+            </div>
+            <div class="card">
+                <img src="https://img.icons8.com/color/96/china.png" alt="Mandarin">
+                <h3>Mandarin</h3>
+                <p>Explore China’s rich history and future opportunities.</p>
+            </div>
+            <div class="card">
+                <img src="https://img.icons8.com/color/96/france.png" alt="French">
+                <h3>French</h3>
+                <p>The language of love, art, and diplomacy!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how">
+        <h2>💡 How It Works</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://img.icons8.com/ios/100/add-user-group-man-man.png" alt="Sign Up">
+                <h3>Sign Up</h3>
+                <p>Create your free profile and tell us your native and target languages.</p>
+            </div>
+            <div class="card">
+                <img src="https://img.icons8.com/ios/100/find-user-male.png" alt="Match">
+                <h3>Find Partners</h3>
+                <p>We match you with learners and native speakers for live practice!</p>
+            </div>
+            <div class="card">
+                <img src="https://img.icons8.com/ios/100/video-call.png" alt="Practice">
+                <h3>Start Talking</h3>
+                <p>Join video calls, text chats, and virtual cultural events.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <h2>💬 What Our Users Say</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <img src="https://img.icons8.com/ios/100/user
+<!-- USERS SAY Section -->
+   <section id=" users-say">
+                <h2>📢 What Users Are Saying</h2>
+                <div class="users-say">
+                    <div class="say-card">
+                        <p>"Just had a 2-hour chat with a native French speaker! I'm getting better every day!"</p>
+                        <h4>— Maria, USA 🇺🇸</h4>
+                    </div>
+                    <div class="say-card">
+                        <p>"VLE feels like traveling the world without leaving my room. Love it!"</p>
+                        <h4>— Ahmed, Egypt 🇪🇬</h4>
+                    </div>
+                    <div class="say-card">
+                        <p>"Joined to practice Spanish... ended up making lifelong friends from Argentina!"</p>
+                        <h4>— Sophie, UK 🇬🇧</h4>
+                    </div>
+                    <div class="say-card">
+                        <p>"Weekly cultural events are my favorite part. You learn language AND traditions!"</p>
+                        <h4>— Chen, China 🇨🇳</h4>
+                    </div>
+                    <div class="say-card">
+                        <p>"Speaking English every day improved my confidence for my job interviews."</p>
+                        <h4>— Diego, Mexico 🇲🇽</h4>
+                    </div>
+                </div>
+    </section>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove from Dropdown</title>
+</head>
+<body>
+
+    <select id="myDropdown">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="cherry">Cherry</option>
+        <option value="date">Date</option>
+        <option value="fig">Fig</option>
+    </select>
+
+    <button id="removeButton">Remove Selected</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.getElementById('myDropdown');
+            const removeButton = document.getElementById('removeButton');
+
+            removeButton.addEventListener('click', function() {
+                const selectedIndex = dropdown.selectedIndex;
+
+                if (selectedIndex !== -1) {
+                    dropdown.remove(selectedIndex);
+                } else {
+                    alert('Please select an item to remove.');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
