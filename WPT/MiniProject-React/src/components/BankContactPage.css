@@ -1,0 +1,141 @@
+/* General Container */
+.container {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #eef2f3, #ffffff);
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Content Wrapper */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+/* Info Section */
+.info-section {
+  flex: 1;
+  padding: 40px;
+  background: linear-gradient(120deg, #3498db, #2c3e50);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 280px;
+}
+
+.info-heading {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+.info-block {
+  margin-bottom: 25px;
+}
+
+.info-block h3 {
+  margin: 0 0 5px;
+  font-size: 1.2rem;
+  color: #e0f7ff;
+}
+
+/* Form Section */
+.form-section {
+  flex: 2;
+  padding: 40px;
+  background-color: #ffffffea;
+}
+
+.form-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #002244;
+}
+
+.form-section h5 {
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  background: #f9fcff;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
+
+/* Submit Button */
+.submit-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+button[type="submit"] {
+  background: #3498db;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: #2c80b4;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .info-section,
+  .form-section {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .submit-container {
+    justify-content: center;
+  }
+}

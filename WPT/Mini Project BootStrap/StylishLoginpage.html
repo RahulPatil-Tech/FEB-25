@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .container {
+            perspective: 1000px;
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 360px;
+            height: 420px;
+            border: 1px solid transparent;
+            perspective: 1000px;
+            margin: 0 auto;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.5rem;
+        }
+        .flip-card-front {
+            background-color: #ffffff;
+            color: black;
+            border: 1px solid #e0e0e0;
+        }
+        .flip-card-back {
+            background-color: #ffffff;
+            color: black;
+            transform: rotateY(180deg);
+            border: 1px solid #e0e0e0;
+        }
+        .input-error {
+            color: red;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(90deg, #4a148c, #1a237e); /* Gradient background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+            padding: 0.75rem 1rem;
+        }
+        .navbar-brand {
+            font-family: 'Inter', sans-serif;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700; /* Make the brand bold */
+            transition: transform 0.2s ease;
+        }
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+        .nav-link {
+            font-family: 'Inter', sans-serif;
+            color: white;
+            font-size: 1.1rem;
+            margin-left: 1.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+        .nav-item.active .nav-link {
+            color: #ffffff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-purple-100 flex items-center justify-center min-h-screen py-10">
+    <div class="container" style="margin-top: 80px;">
+        <div class="flip-card" id="flipCard">
+            <div class="flip-card-inner">
+                <div class="flip-card-front shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-6 text-blue-600 animate__animated animate__fadeIn">Login</h2>
+                    <form id="loginForm" class="space-y-4 w-full px-8">
+                        <div>
+                            <input type="email" id="loginEmail" name="loginEmail" placeholder="Email" required
+                                   class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500
+                                          placeholder:text-gray-400 text-gray-700 focus:outline-none animate__animated animate__fadeInLeft">
+                            <div id="loginEmailError" class="input-error"></div>
+                        </div>
+                        <div>
+                            <input type="password" id="loginPassword" name="loginPassword" placeholder="Password" required
+                                   class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500
+                                          placeholder:text-gray-400 text-gray-700 focus:outline-none animate__animated animate__fadeInRight">
+                            <div id="loginPasswordError" class="input-error"></div>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50
+                                              font-semibold transition-colors duration-300 animate__animated animate__fadeInUp">
+                            Login
+                        </button>
+                        <div class="text-center text-gray-600 text-sm animate__animated animate__fadeIn">
+                            <a href="#" id="flipToRegister" class="hover:text-blue-600 transition-colors duration-200">Don't have an account? Register</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="flip-card-back shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-6 text-green-600 animate__animated animate__fadeIn">Register</h2>
+                    <form id="registerForm" class="space-y-4 w-full px-8">
+                        <div>
+                            <input type="text" id="registerName" name="registerName" placeholder="Full Name" required
+                                   class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-green-500 focus:ring-green-500
+                                          placeholder:text-gray-400 text-gray-700 focus:outline-none animate__animated animate__fadeInLeft">
+                            <div id="registerNameError" class="input-error"></div>
+                        </div>
+                        <div>
+                            <input type="email" id="registerEmail" name="registerEmail" placeholder="Email" required
+                                   class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-green-500 focus:ring-green-500
+                                          placeholder:text-gray-400 text-gray-700 focus:outline-none animate__animated animate__fadeInRight">
+                            <div id="registerEmailError" class="input-error"></div>
+                        </div>
+                        <div>
+                            <input type="password" id="registerPassword" name="registerPassword" placeholder="Password" required
+                                   class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-green-500 focus:ring-green-500
+                                          placeholder:text-gray-400 text-gray-700 focus:outline-none animate__animated animate__fadeInUp">
+                            <div id="registerPasswordError" class="input-error"></div>
+                        </div>
+                        <div>
+                            <input type="password" id="registerConfirmPassword" name="registerConfirmPassword" placeholder="Confirm Password" required
+                                   class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-green-500 focus:ring-green-500
+                                          placeholder:text-gray-400 text-gray-700 focus:outline-none animate__animated animate__fadeInDown">
+                            <div id="registerConfirmPasswordError" class="input-error"></div>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50
+                                              font-semibold transition-colors duration-300 animate__animated animate__fadeInUp">
+                            Register
+                        </button>
+                        <div class="text-center text-gray-600 text-sm animate__animated animate__fadeIn">
+                            <a href="#" id="flipToLogin" class="hover:text-green-600 transition-colors duration-200">Already have an account? Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const flipCard = document.getElementById('flipCard');
+        const flipToRegisterButton = document.getElementById('flipToRegister');
+        const flipToLoginButton = document.getElementById('flipToLogin');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        flipToRegisterButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            flipCard.classList.add('flipped');
+        });
+
+        flipToLoginButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            flipCard.classList.remove('flipped');
+        });
+
+        function validateEmail(email) {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            let isFormValid = true;
+            const loginEmail = document.getElementById('loginEmail').value.trim();
+            const loginPassword = document.getElementById('loginPassword').value.trim();
+            const loginEmailError = document.getElementById('loginEmailError');
+            const loginPasswordError = document.getElementById('loginPasswordError');
+
+            loginEmailError.textContent = '';
+            loginPasswordError.textContent = '';
+
+            if (!loginEmail) {
+                loginEmailError.textContent = 'Email is required';
+                isFormValid = false;
+            } else if (!validateEmail(loginEmail)) {
+                loginEmailError.textContent = 'Invalid email format';
+                isFormValid = false;
+            }
+
+            if (!loginPassword) {
+                loginPasswordError.textContent = 'Password is required';
+                isFormValid = false;
+            }
+
+            if (isFormValid) {
+                // Simulate a successful login (replace with actual authentication logic)
+                console.log('Login successful', { loginEmail, loginPassword });
+                alert('Login successful! (Simulated)');
+                loginForm.reset();
+            }
+        });
+
+        registerForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let isFormValid = true;
+
+            const registerName = document.getElementById('registerName').value.trim();
+            const registerEmail = document.getElementById('registerEmail').value.trim();
+            const registerPassword = document.getElementById('registerPassword').value.trim();
+            const registerConfirmPassword = document.getElementById('registerConfirmPassword').value.trim();
+
+            const registerNameError = document.getElementById('registerNameError');
+            const registerEmailError = document.getElementById('registerEmailError');
+            const registerPasswordError = document.getElementById('registerPasswordError');
+            const registerConfirmPasswordError = document.getElementById('registerConfirmPasswordError');
+
+            registerNameError.textContent = '';
+            registerEmailError.textContent = '';
+            registerPasswordError.textContent = '';
+            registerConfirmPasswordError.textContent = '';
+
+            if (!registerName) {
+                registerNameError.textContent = 'Name is required';
+                isFormValid = false;
+            }
+
+            if (!registerEmail) {
+                registerEmailError.textContent = 'Email is required';
+                isFormValid = false;
+            } else if (!validateEmail(registerEmail)) {
+                registerEmailError.textContent = 'Invalid email format';
+                isFormValid = false;
+            }
+
+            if (!registerPassword) {
+                registerPasswordError.textContent = 'Password is required';
+                isFormValid = false;
+            } else if (registerPassword.length < 8) {
+                registerPasswordError.textContent = 'Password must be at least 8 characters';
+                isFormValid = false;
+            }
+
+            if (!registerConfirmPassword) {
+                registerConfirmPasswordError.textContent = 'Confirm Password is required';
+                isFormValid = false;
+            } else if (registerPassword !== registerConfirmPassword) {
+                registerConfirmPasswordError.textContent = 'Passwords do not match';
+                isFormValid = false;
+            }
+
+            if (isFormValid) {
+                // Simulate a successful registration (replace with actual database logic)
+                console.log('Registration successful', { registerName, registerEmail, registerPassword });
+                alert('Registration successful! (Simulated)');
+                registerForm.reset();
+                flipCard.classList.remove('flipped'); // Flip back to login
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

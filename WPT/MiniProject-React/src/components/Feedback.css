@@ -1,0 +1,155 @@
+/* ✨ Feedback Section */
+.feedback-section {
+  position: relative;
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(135deg, #2c3e50, #2980b9, #3498db, #2c3e50);
+  background-size: 400% 400%;
+  animation: bgGradientShift 15s ease infinite;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+@keyframes bgGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.feedback-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.feedback-subtitle {
+  font-size: 1.3rem;
+  color: #dfe6e9;
+  margin-bottom: 3rem;
+}
+
+.lottie-wrapper {
+  max-width: 220px;
+  margin: 0 auto 2.2rem;
+}
+
+/* ✨ Feedback Grid */
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  z-index: 2;
+}
+
+/* 💎 Glassmorphic Cards */
+.feedback-card {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2rem;
+  border-radius: 1.2rem;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.7s forwards;
+}
+
+.feedback-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+}
+
+/* 📣 Quote & Meta */
+.feedback-quote {
+  font-style: italic;
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin-bottom: 1.4rem;
+  line-height: 1.6;
+}
+
+.feedback-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #e0e0e0;
+}
+
+.rating {
+  font-size: 1.3rem;
+  color: #fbc02d;
+}
+
+.location {
+  color: #bbbbbb;
+}
+
+/* ✨ Animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🧊 Glass Modifier */
+.glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* 🌟 SVG Background Blob */
+.bg-blob {
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(-20deg);
+  animation: blobFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes blobFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(10px, -20px) scale(1.05);
+  }
+}
+
+/* 🌙 Dark Mode Styles */
+.dark-mode .feedback-section {
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+}
+
+.dark-mode .feedback-title {
+  color: #a3e635;
+}
+
+.dark-mode .feedback-subtitle {
+  color: #cbd5e1;
+}
+
+.dark-mode .feedback-quote {
+  color: #e0e0e0;
+}
+
+.dark-mode .feedback-meta {
+  color: #9ca3af;
+}
+
+.dark-mode .feedback-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
